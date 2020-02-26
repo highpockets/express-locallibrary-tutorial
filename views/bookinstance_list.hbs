@@ -1,0 +1,14 @@
+<h1>{{title}}</h1>
+
+<ul>
+    {{#if bookinstance_list}}
+        {{#each bookinstance_list}}
+        <li>
+            <a href={{this.url}}>{{this.book.title}} : {{this.imprint}}</a>
+            {{bookstatus this false}}
+        </li>
+        {{/each}}
+    {{else}}
+        <li><p>There are no book copies in this library.</p></li>
+    {{/if}}
+</ul>

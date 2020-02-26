@@ -1,0 +1,14 @@
+<h1>{{title}}</h1>
+
+<ul>
+    {{#if book_list}}
+        {{sort book_list}}
+        {{#each book_list}}
+            <li>
+                <a href={{this.url}}>{{this.title}}</a> {{this.author.name}}
+            </li>
+        {{/each}}
+    {{else}}
+        <li>There are no books.</li>
+    {{/if}}
+</ul>
