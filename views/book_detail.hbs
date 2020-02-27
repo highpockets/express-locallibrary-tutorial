@@ -15,7 +15,7 @@
     <h4>Copies</h4>
     {{#each book_instances}}
         <hr>
-        {{bookstatus this true}}
+        {{book_status this true}}
         <p><strong>Imprint: </strong> {{this.imprint}}</p>
         {{overdue this}}
         <p><strong>Id:</strong>&nbsp;
@@ -25,3 +25,7 @@
         <p>There are no copies of this book in the library.</p>
     {{/each}}
 </div>
+<hr>
+<p>
+    <a href={{concatenate_strings book.url '/delete'}}>Delete Book</a>
+</p>

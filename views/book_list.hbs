@@ -2,7 +2,7 @@
 
 <ul>
     {{#if book_list}}
-        {{sort book_list}}
+        {{sort_books book_list}}
         {{#each book_list}}
             <li>
                 <a href={{this.url}}>{{this.title}}</a> {{this.author.name}}

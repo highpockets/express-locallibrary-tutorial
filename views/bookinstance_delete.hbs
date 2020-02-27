@@ -1,0 +1,18 @@
+<h1>{{title}} {{bookinstance._id}}</h1>
+
+<p><strong>Title:</strong>
+    <a href={{bookinstance.book.url}}>{{bookinstance.book.title}}</a>
+</p>
+<p><strong>Imprint: </strong>{{bookinstance.imprint}}</p>
+
+<p><strong>Status:</strong>
+    {{book_status bookinstance true}}
+</p>
+
+<p>Do you really want to delete this copy of <strong>"{{bookinstance.book.title}}" ?</strong></p>
+<form action="" method="POST">
+    <div class="form-group">
+        <input id="bookinstanceid" class="form-control" type="hidden" name="bookinstanceid" required="true" value={{bookinstance._id}}>
+    </div>
+    <button class="btn btn-primary" type="submit">Delete</button>
+</form>
