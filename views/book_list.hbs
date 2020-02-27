@@ -5,7 +5,7 @@
         {{sort_books book_list}}
         {{#each book_list}}
             <li>
-                <a href={{this.url}}>{{this.title}}</a> {{this.author.name}}
+                <a href={{this.url}}>{{make_safe this.title}}</a> {{this.author.name}}
             </li>
         {{/each}}
     {{else}}

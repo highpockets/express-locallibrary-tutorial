@@ -1,4 +1,4 @@
-<h1>Title: {{book.title}}</h1>
+<h1>Title: {{make_safe book.title}}</h1>
 
 <p><strong>Author:</strong>
     <a href={{book.author.url}}>{{book.author.name}}</a>
@@ -28,4 +28,7 @@
 <hr>
 <p>
     <a href={{concatenate_strings book.url '/delete'}}>Delete Book</a>
+</p>
+<p>
+    <a href={{concatenate_strings book.url '/update'}}>Update Book</a>
 </p>

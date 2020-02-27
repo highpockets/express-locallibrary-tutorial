@@ -6,7 +6,7 @@
             {{#if genre_books}}
                 {{#each genre_books}}
                     <dt>
-                        <a href={{this.url}}>{{this.title}}</a>
+                        <a href={{this.url}}>{{make_safe this.title}}</a>
                     </dt>
                     <dd>{{this.summary}}</dd>
                 {{/each}}
@@ -19,4 +19,7 @@
 <hr>
 <p>
     <a href={{concatenate_strings genre.url '/delete'}}>Delete Genre</a>
+</p>
+<p>
+    <a href={{concatenate_strings genre.url '/update'}}>Update Genre</a>
 </p>

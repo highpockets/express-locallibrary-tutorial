@@ -1,7 +1,7 @@
 <h1>Copy ID: {{bookinstance._id}}</h1>
 
 <p><strong>Title:</strong>
-    <a href={{bookinstance.book.url}}>{{bookinstance.book.title}}</a>
+    <a href={{bookinstance.book.url}}>{{make_safe bookinstance.book.title}}</a>
 </p>
 <p><strong>Imprint: </strong>{{bookinstance.imprint}}</p>
 
@@ -14,4 +14,7 @@
 <hr>
 <p>
     <a href={{concatenate_strings bookinstance.url '/delete'}}>Delete Copy</a>
+</p>
+<p>
+    <a href={{concatenate_strings bookinstance.url '/update'}}>Update Copy</a>
 </p>

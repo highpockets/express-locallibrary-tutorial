@@ -2,25 +2,30 @@
 
 <form method="POST" action="">
     <div class="form-group">
-        <label for="book">Book:</label>
-        <select name="book" id="book" class="form-control" type='select' placeholder='Select book' required='true' >
-            {{sort_books book_list}}
-            {{#each book_list}}
-                {{#if bookinstance}}
-                    <option value={{this._id}} selected={{is_the_author bookinstance.book this._id}}>{{this.title}}</option>
-                {{else}}
-                    <option value={{this._id}}>{{this.title}}</option>
-                {{/if}}
-            {{/each}}
-        </select>
+        {{#unless book_list}}
+            <p><strong>Book: </strong>{{make_safe book.title}}</p>
+            <input id="book" class="form-control" type="hidden" name="book" required="true" value={{book._id}}>
+        {{else}}
+            <label for="book">Book:</label>
+            <select name="book" id="book" class="form-control" type='select' placeholder='Select book' required='true' >
+                {{sort_books book_list}}
+                {{#each book_list}}
+                    {{#if bookinstance}}
+                        <option value={{this._id}} {{is_the_book bookinstance.book this._id}}>{{this.title}}</option>
+                    {{else}}
+                        <option value={{this._id}}>{{this.title}}</option>
+                    {{/if}}
+                {{/each}}
+            </select>
+        {{/unless}}
     </div>
     <div class="form-group">
         <label for="imprint">Imprint:</label>
-        <input id="imprint" class="form-control" type="text" placeholder="Publisher and date information" name="imprint" required='true' value={{is_undefined bookinstance bookinstance.imprint}}>
+        <input id="imprint" class="form-control" type="text" placeholder="Publisher and date information" name="imprint" required='true' value='{{is_undefined bookinstance bookinstance.imprint}}'>
     </div>
     <div class="form-group">
         <label for="due_back">Date when book available:</label>
-        <input id="due_back" class="form-control" type="text" name="due_back" value={{is_undefined bookinstance bookinstance.due_back}}>
+        <input id="due_back" class="form-control" type="date" name="due_back" value={{is_undefined bookinstance bookinstance.due_back}}>
     </div>
     <div class="form-group">
         <label for="status">Staus:</label>

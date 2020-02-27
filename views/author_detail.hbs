@@ -7,9 +7,9 @@
     <dl>
         {{#each author_books}}
             <dt>
-                <a href={{this.url}}>{{this.title}}</a>
+                <a href={{this.url}}>{{make_safe this.title}}</a>
             </dt>
-            <dd>{{this.summary}}</dd>
+            <dd>{{make_safe this.summary}}</dd>
         {{else}}
             <p>This author has no books.</p>
         {{/each}}
@@ -18,4 +18,7 @@
 <hr>
 <p>
     <a href={{concatenate_strings author.url '/delete'}}>Delete Author</a>
+</p>
+<p>
+    <a href={{concatenate_strings author.url '/update'}}>Update Author</a>
 </p>

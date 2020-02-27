@@ -1,7 +1,7 @@
 <h1>{{title}} {{bookinstance._id}}</h1>
 
 <p><strong>Title:</strong>
-    <a href={{bookinstance.book.url}}>{{bookinstance.book.title}}</a>
+    <a href={{bookinstance.book.url}}>{{make_safe bookinstance.book.title}}</a>
 </p>
 <p><strong>Imprint: </strong>{{bookinstance.imprint}}</p>
 
@@ -9,7 +9,7 @@
     {{book_status bookinstance true}}
 </p>
 
-<p>Do you really want to delete this copy of <strong>"{{bookinstance.book.title}}" ?</strong></p>
+<p>Do you really want to delete this copy of <strong>"{{make_safe bookinstance.book.title}}" ?</strong></p>
 <form action="" method="POST">
     <div class="form-group">
         <input id="bookinstanceid" class="form-control" type="hidden" name="bookinstanceid" required="true" value={{bookinstance._id}}>

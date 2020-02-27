@@ -4,7 +4,7 @@
     {{#if bookinstance_list}}
         {{#each bookinstance_list}}
         <li>
-            <a href={{this.url}}>{{this.book.title}} : {{this.imprint}}</a>
+            <a href={{this.url}}>{{make_safe this.book.title}} : {{this.imprint}}</a>
             {{book_status this false}}
         </li>
         {{/each}}

@@ -1,4 +1,5 @@
 var hbs = require('hbs');
+var moment = require('moment');
 
 hbs.handlebars.registerHelper('sort_books', function(book_list){
     book_list.sort(function(a, b) {let textA = a.title.toUpperCase(); let textB = b.title.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
@@ -26,8 +27,13 @@ hbs.handlebars.registerHelper('is_checked', function(checked){
     return (checked == 'true') ? new hbs.handlebars.SafeString(`checked`) : new hbs.handlebars.SafeString(``);
 });
 
-hbs.handlebars.registerHelper('is_the_author', function(author_id, author){
-    return (author_id.toString() == author.toString()) ? 'selected' : false;
+hbs.handlebars.registerHelper('is_the_author', function(author_id, author, book_author_id){
+    return (author_id.toString() == author.toString()
+            || author_id.toString() == book_author_id.toString()) ? new hbs.handlebars.SafeString('selected') : '';
+});
+
+hbs.handlebars.registerHelper('is_the_book', function(book_id, book){
+    return (book_id.toString() == book.toString()) ? new hbs.handlebars.SafeString('selected') : '';
 });
 
 hbs.handlebars.registerHelper('overdue', function(book_copy){
@@ -35,11 +41,16 @@ hbs.handlebars.registerHelper('overdue', function(book_copy){
 });
 
 hbs.handlebars.registerHelper('is_undefined', function(obj, val){
-    return (obj === undefined) ? '' : val;
+    if(val instanceof Date) { val = moment(val).format('YYYY-MM-DD'); }
+    return (obj === undefined) ? '' : new hbs.handlebars.SafeString(val);
 });
 
 hbs.handlebars.registerHelper('concatenate_strings', function(first, second){
     return first + '' + second;
+});
+
+hbs.handlebars.registerHelper('make_safe', function(str){
+    return new hbs.handlebars.SafeString(str);
 });
 
 module.exports = hbs;
