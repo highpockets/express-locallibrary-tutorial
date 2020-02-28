@@ -11,9 +11,9 @@
                 {{sort_books book_list}}
                 {{#each book_list}}
                     {{#if bookinstance}}
-                        <option value={{this._id}} {{is_the_book bookinstance.book this._id}}>{{this.title}}</option>
+                        <option value={{this._id}} {{is_the_book bookinstance.book this._id}}>{{make_safe this.title}}</option>
                     {{else}}
-                        <option value={{this._id}}>{{this.title}}</option>
+                        <option value={{this._id}}>{{make_safe this.title}}</option>
                     {{/if}}
                 {{/each}}
             </select>
