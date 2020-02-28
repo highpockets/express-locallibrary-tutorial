@@ -66,7 +66,7 @@ exports.bookinstance_create_post = [
         var bookinstance = new BookInstance({
             book: req.body.book,
             imprint: req.body.imprint,
-            status: req.body.imprint,
+            status: req.body.status,
             due_back: req.body.due_back
         });
         if(!errors.isEmpty()) {
